@@ -1,0 +1,10 @@
+{
+  "name": "Lokkhi Pakhi's Routine",
+  "short_name": "My Routine",
+  "description": "Personal study planner based on an existing routine workbook.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8f6fb",
+  "theme_color": "#f6f2ff",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

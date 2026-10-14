@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f2ff" />
+  <meta name="description" content="A personal timetable and study routine tracker based on Lokkhi Pakhi's Routine workbook." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Lokkhi Pakhi's Routine</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brandmark">✿</div>
+    <div class="brand"><p class="eyebrow">MY PERSONAL PLANNER</p><h1>Lokkhi Pakhi's Routine</h1></div>
+    <button id="resetBtn" class="icon-button" aria-label="Reset app changes" title="Reset app changes">↺</button>
+  </header>
+  <main>
+    <section class="hero card">
+      <div><p class="eyebrow" id="todayLabel">YOUR ROUTINE, YOUR PACE</p><h2 id="heroTitle">Small steps count.</h2><p class="muted" id="heroSub">Your workbook, turned into a pocket planner.</p></div>
+      <div class="hero-flower" aria-hidden="true">✿</div>
+      <div class="overall-progress"><div class="progress-meta"><span>Selected day progress</span><strong id="progressText">0%</strong></div><div class="progress-track"><div id="progressBar" class="progress-fill"></div></div></div>
+    </section>
+
+    <nav class="tabs" aria-label="Main sections">
+      <button class="tab active" data-view="month">☷ <span>Month</span></button>
+      <button class="tab" data-view="setup">◷ <span>Setup</span></button>
+      <button class="tab" data-view="annual">▦ <span>Annual</span></button>
+      <button class="tab" data-view="care">♡ <span>Care</span></button>
+    </nav>
+
+    <section id="view-month" class="view active">
+      <div class="section-heading"><div><p class="eyebrow">DAILY CHECKLIST</p><h2>Monthly routine</h2></div><select id="monthSelect" aria-label="Choose month"></select></div>
+      <div class="month-strip" id="dayStrip" aria-label="Choose date"></div>
+      <div class="day-heading"><div><p class="eyebrow" id="selectedDate"></p><h3 id="selectedDayTitle">Today's tasks</h3></div><span class="pill" id="dayCount">0 tasks</span></div>
+      <div id="taskList" class="task-list"></div>
+      <p class="small-note">Changes here are saved on this device only. Your original spreadsheet is not connected to this app.</p>
+    </section>
+
+    <section id="view-setup" class="view">
+      <div class="section-heading"><div><p class="eyebrow">YOUR ORIGINAL WEEKLY PLAN</p><h2>Routine setup</h2></div><select id="weekdaySelect" aria-label="Choose weekday"></select></div>
+      <div class="summary-card"><div><span class="muted">Planned activities</span><strong id="setupCount">0</strong></div><div><span class="muted">First start</span><strong id="setupFirst">—</strong></div><div><span class="muted">Last listed</span><strong id="setupLast">—</strong></div></div>
+      <div id="scheduleList" class="schedule-list"></div>
+      <p class="small-note">This is a read-only view of the routine times imported from SETUP. To change them in a future version, we can add in-app editing without touching the spreadsheet.</p>
+    </section>
+
+    <section id="view-annual" class="view">
+      <div class="section-heading"><div><p class="eyebrow">A BIGGER PICTURE</p><h2>Monthly progress</h2></div><span class="pill">2026</span></div>
+      <div id="annualCards" class="annual-list"></div>
+      <div class="summary-card annual-total"><div><span class="muted">Tracked dates</span><strong id="annualDates">0</strong></div><div><span class="muted">Tasks completed</span><strong id="annualDone">0</strong></div><div><span class="muted">Completion</span><strong id="annualPercent">0%</strong></div></div>
+      <p class="small-note">Monthly totals are calculated from the imported checkboxes and your changes inside this app.</p>
+    </section>
+
+    <section id="view-care" class="view">
+      <div class="section-heading"><div><p class="eyebrow">PROGRESS & REWARDS</p><h2>Care tracker</h2></div></div>
+      <div class="care-main card"><div class="care-number"><strong id="carePercent">0%</strong><span>of tracked items complete</span></div><div class="progress-track"><div id="careBar" class="progress-fill"></div></div><div class="care-stats"><div><span class="muted">Total</span><strong id="careTotal">0</strong></div><div><span class="muted">Completed</span><strong id="careCompleted">0</strong></div><div><span class="muted">Remaining</span><strong id="careRemaining">0</strong></div></div></div>
+      <h3 class="subheading">Progress milestones</h3><div id="milestoneList" class="milestone-list"></div>
+      <h3 class="subheading">Workbook category snapshots</h3><div id="careCategories" class="category-list"></div>
+      <p class="small-note">Milestone labels are reproduced from your workbook. This app does not enforce or assign any consequences.</p>
+    </section>
+  </main>
+  <footer><span>Made from your existing routine</span><span>✿</span></footer>
+  <dialog id="resetDialog"><div class="dialog-inner"><h3>Reset app changes?</h3><p>This restores the imported checkbox states in this app. It will not change your Google Sheet or uploaded Excel file.</p><div class="dialog-actions"><button id="cancelReset" class="secondary-button">Keep changes</button><button id="confirmReset" class="primary-button">Reset app</button></div></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
